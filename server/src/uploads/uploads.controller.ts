@@ -15,12 +15,15 @@ import { imageFileFilter, listingImageStorage } from './multer.config';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { CurrentUser } from '../common/decorators/current-user.decorator';
 import { CurrentUserType } from '../common/types/current-user.type';
+import { Roles } from '../common/decorators/roles.decorator';
+import { RolesGuard } from '../common/guards/roles.guard';
 
 @Controller('uploads')
 export class UploadsController {
     constructor(private readonly uploadsService: UploadsService) { }
 
-    @UseGuards(JwtAuthGuard)
+    @UseGuards(JwtAuthGuard, RolesGuard)
+    @Roles('ADMIN', 'MANAGER')
     @Post('listings/:listingId/image')
     @UseInterceptors(
         FileInterceptor('image', {
@@ -44,7 +47,8 @@ export class UploadsController {
         return this.uploadsService.attachListingImage(listingId, user, file);
     }
 
-    @UseGuards(JwtAuthGuard)
+    @UseGuards(JwtAuthGuard, RolesGuard)
+    @Roles('ADMIN', 'MANAGER')
     @Delete('images/:imageId')
     removeListingImage(
         @Param('imageId') imageId: string,

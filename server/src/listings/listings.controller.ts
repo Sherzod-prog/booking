@@ -16,12 +16,15 @@ import { QueryListingDto } from './dto/query-listing.dto';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { CurrentUser } from '../common/decorators/current-user.decorator';
 import { CurrentUserType } from '../common/types/current-user.type';
+import { Roles } from '../common/decorators/roles.decorator';
+import { RolesGuard } from '../common/guards/roles.guard';
 
 @Controller('listings')
 export class ListingsController {
     constructor(private readonly listingsService: ListingsService) { }
 
-    @UseGuards(JwtAuthGuard)
+    @UseGuards(JwtAuthGuard, RolesGuard)
+    @Roles('ADMIN', 'MANAGER')
     @Post()
     create(
         @CurrentUser() user: CurrentUserType,

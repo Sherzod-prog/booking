@@ -42,8 +42,30 @@ export class ListingsService {
     }
 
     async findAll(query: QueryListingDto) {
-        const { search, location, status, page = 1, limit = 10 } = query;
+        const {
+            search,
+            location,
+            status,
+            ownerId,
+            page = 1,
+            limit = 10,
+            sortBy = 'createdAt',
+            sortOrder = 'desc',
+        } = query;
+
         const skip = (page - 1) * limit;
+
+        const allowedSortFields = [
+            'createdAt',
+            'updatedAt',
+            'title',
+            'location',
+            'pricePerNight',
+            'status',
+        ];
+
+        const safeSortBy = allowedSortFields.includes(sortBy) ? sortBy : 'createdAt';
+        const safeSortOrder = String(sortOrder).toLowerCase() === 'asc' ? 'asc' : 'desc';
 
         const where: Prisma.ListingWhereInput = {
             AND: [
@@ -56,9 +78,12 @@ export class ListingsService {
                     }
                     : {},
                 location
-                    ? { location: { contains: location, mode: 'insensitive' } }
+                    ? {
+                        location: { contains: location, mode: 'insensitive' },
+                    }
                     : {},
                 status ? { status } : {},
+                ownerId ? { ownerId } : {},
             ],
         };
 
@@ -67,10 +92,16 @@ export class ListingsService {
                 where,
                 skip,
                 take: limit,
-                orderBy: { createdAt: 'desc' },
+                orderBy: {
+                    [safeSortBy]: safeSortOrder,
+                },
                 include: {
                     owner: {
-                        select: { id: true, fullName: true, email: true },
+                        select: {
+                            id: true,
+                            fullName: true,
+                            email: true,
+                        },
                     },
                     images: true,
                 },
@@ -88,6 +119,7 @@ export class ListingsService {
             },
         };
     }
+
 
     async findOne(id: string) {
         const listing = await this.prisma.listing.findUnique({
