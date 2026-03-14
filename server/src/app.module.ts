@@ -7,11 +7,12 @@ import { PrismaModule } from './prisma/prisma.module';
 import { ListingsModule } from './listings/listings.module';
 import { UploadsModule } from './uploads/uploads.module';
 import { BookingsModule } from './bookings/bookings.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @Module({
   imports: [ConfigModule.forRoot(
     { isGlobal: true }
-  ), AuthModule, UsersModule, PrismaModule, ListingsModule, UploadsModule, BookingsModule],
+  ), AuthModule, UsersModule, PrismaModule, ListingsModule, UploadsModule, BookingsModule, DashboardModule],
 
 })
 export class AppModule { }

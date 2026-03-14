@@ -39,7 +39,8 @@ const App = () => {
             <Resource
                 name="bookings"
                 list={BookingList}
-                edit={isAdmin(role) ? BookingEdit : undefined}
+                edit={BookingEdit}
+                // edit={isAdmin(role) ? BookingEdit : undefined}
                 icon={BookOnlineIcon}
             />
 

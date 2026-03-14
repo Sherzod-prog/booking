@@ -7,6 +7,9 @@ import {
     required,
     minValue,
 } from "react-admin";
+import { Box, Typography } from "@mui/material";
+import { ListingImageUpload } from "./ListingImageUpload";
+import { ListingImagesGallery } from "./ListingImagesGallery";
 
 export const ListingEdit = () => (
     <Edit>
@@ -33,6 +36,14 @@ export const ListingEdit = () => (
                     { id: "ARCHIVED", name: "ARCHIVED" },
                 ]}
             />
+
+            <Box sx={{ width: "100%", mt: 3 }}>
+                <Typography variant="h6" gutterBottom>
+                    Listing rasmlari
+                </Typography>
+                <ListingImageUpload />
+                <ListingImagesGallery />
+            </Box>
         </SimpleForm>
     </Edit>
 );
