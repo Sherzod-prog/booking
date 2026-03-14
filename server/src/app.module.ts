@@ -8,11 +8,12 @@ import { ListingsModule } from './listings/listings.module';
 import { UploadsModule } from './uploads/uploads.module';
 import { BookingsModule } from './bookings/bookings.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { PaymentsModule } from './payments/payments.module';
 
 @Module({
   imports: [ConfigModule.forRoot(
     { isGlobal: true }
-  ), AuthModule, UsersModule, PrismaModule, ListingsModule, UploadsModule, BookingsModule, DashboardModule],
+  ), AuthModule, UsersModule, PrismaModule, ListingsModule, UploadsModule, BookingsModule, DashboardModule, PaymentsModule],
 
 })
 export class AppModule { }

@@ -13,6 +13,9 @@ import { ListingEdit } from "./resources/listings/ListingEdit";
 import { BookingList } from "./resources/bookings/BookingList";
 import { BookingEdit } from "./resources/bookings/BookingEdit";
 import { UserList } from "./resources/users/UserList";
+import PaymentsIcon from "@mui/icons-material/Payments";
+import { PaymentList } from "./resources/payments/PaymentList";
+import { PaymentShow } from "./resources/payments/PaymentShow";
 
 import { getStoredRole, isAdmin, isAdminOrManager } from "./utils/permissions";
 
@@ -49,6 +52,14 @@ const App = () => {
                     name="users"
                     list={UserList}
                     icon={GroupIcon}
+                />
+            )}
+            {isAdmin(role) && (
+                <Resource
+                    name="payments"
+                    list={PaymentList}
+                    show={PaymentShow}
+                    icon={PaymentsIcon}
                 />
             )}
         </Admin>

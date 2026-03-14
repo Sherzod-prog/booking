@@ -8,12 +8,12 @@ Ushbu loyiha mehmonxonalar yoki xizmatlarni bron qilish uchun mo'ljallangan to'l
 
 Loyiha uchta asosiy qismdan iborat:
 
-| Qism | Texnologiya | Tavsif |
+| Qism | Texnologiya |
 | :--- | :--- | :--- |
-| **Backend** | `NestJS` | Masshtablanuvchi va modular API |
-| **Frontend** | `React + Vite` | Tezkor va optimallashgan mijoz interfeysi |
-| **Dashboard** | `React Admin` | Ma'lumotlarni boshqarish uchun tayyor Admin panel |
-| **Database** | `PostgreSQL` | (Yoki siz ishlatayotgan baza, masalan: MongoDB) |
+| **Backend** | `NestJS` |
+| **Frontend** | `React + Vite` |
+| **Dashboard** | `React Admin` |
+| **Database** | `PostgreSQL` |
 
 ---
 

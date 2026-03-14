@@ -8,9 +8,11 @@ import * as express from 'express';
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
+  app.use('/api/payments/stripe/webhook', express.raw({ type: 'application/json' }));
+  app.use(express.json());
+
   app.enableCors();
   app.setGlobalPrefix('api');
-
   app.use('/uploads', express.static(join(process.cwd(), 'uploads')));
 
   app.useGlobalPipes(
