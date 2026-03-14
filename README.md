@@ -9,10 +9,15 @@ Ushbu loyiha mehmonxonalar yoki xizmatlarni bron qilish uchun mo'ljallangan to'l
 Loyiha uchta asosiy qismdan iborat:
 
 | Qism | Texnologiya |
+
 | :--- | :--- | :--- |
+
 | **Backend** | `NestJS` |
+
 | **Frontend** | `React + Vite` |
+
 | **Dashboard** | `React Admin` |
+
 | **Database** | `PostgreSQL` |
 
 ---
@@ -22,4 +27,4 @@ Loyiha uchta asosiy qismdan iborat:
 ### 1. Repozitoriyani klonlash
 ```bash
 git clone [https://github.com/Sherzod-prog/booking.git](https://github.com/Sherzod-prog/booking.git)
-cd booking-project
+cd booking
