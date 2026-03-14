@@ -21,5 +21,5 @@ Loyiha uchta asosiy qismdan iborat:
 
 ### 1. Repozitoriyani klonlash
 ```bash
-git clone [https://github.com/Sherzod-prog/booking-project.git](https://github.com/Sherzod-prog/booking-project.git)
+git clone [https://github.com/Sherzod-prog/booking.git](https://github.com/Sherzod-prog/booking.git)
 cd booking-project
